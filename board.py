@@ -1,6 +1,8 @@
 import pygame as pg
 
-
+preset=[["white","gray"]]
+preset.append(["#ebecd0","#779556"])#tan,green
+print(preset[0])
 class Board:
     def __init__(self):
         self.DIMENSION = 8
@@ -8,13 +10,21 @@ class Board:
 
         self.sq_size = self.HEIGHT // self.DIMENSION
 
-    def drawBoard(self, screen):
-        colors = [pg.Color("white"), pg.Color("gray")]
+    def drawBoard(self, screen,selected_piece):
+        colors = [pg.Color(preset[1][0]), pg.Color(preset[1][1])]
         for r in range(self.DIMENSION):
             for c in range(self.DIMENSION):
                 current_color = colors[((r + c) % 2)]
                 # print(f"current color is {current_color}")
                 # print((r + c) % 2)
+                # if selected_piece!=None :
+                #     if selected_piece[0]==
+                prevous=None
+                if prevous!=selected_piece:
+
+                    print(selected_piece)
+                    prevous=selected_piece
+                
                 pg.draw.rect(screen,current_color,pg.Rect(c * self.sq_size, r * self.sq_size, self.sq_size, self.sq_size ))
 
     def drawPieces(self, screen, board, Images_path):
