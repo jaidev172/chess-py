@@ -60,11 +60,11 @@ def main():
 
                     mouse_pos = board.coorToPos(pg.mouse.get_pos())
 
-                    gs.board[selected_piece[1]][selected_piece[0]], gs.board[mouse_pos[1]][mouse_pos[0]] = (".", gs.board[selected_piece[1]][selected_piece[0]])
-                   
+                    gs.board[selected_piece[0][1]][selected_piece[0][0]], gs.board[mouse_pos[1]][mouse_pos[0]] = (".", gs.board[selected_piece[0][1]][selected_piece[0][0]])
+                    
                     selected_piece = None
                 else :
-                 selected_piece = board.coorToPos(pg.mouse.get_pos())
+                 selected_piece = [board.coorToPos(pg.mouse.get_pos())]
 
         drawGameState(screen, gs, board,selected_piece)
         pg.display.flip()
