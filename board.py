@@ -3,7 +3,7 @@ import pygame as pg
 preset=[["white","gray"]]
 preset.append(["#ebecd0","#779556"])#tan,green
 print(preset[0])
-select_colour=pg.Color("#e5c4aa")
+select_colour=pg.Color(194, 214, 247)# light blue rgb()   194, 214, 247  185, 202, 67lime  208, 226, 74
 class Board:
     def __init__(self):
         self.DIMENSION = 8
@@ -20,7 +20,7 @@ class Board:
                 # print((r + c) % 2)
                 if selected_piece!=None :
                     print(selected_piece[0])            
-                    if selected_piece[0]==[c,r]:
+                    if selected_piece[0]==(c,r):
 
                         current_color=select_colour
 

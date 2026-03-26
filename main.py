@@ -54,7 +54,7 @@ def main():
             if e.type == pg.QUIT:
                 running = False
             if e.type == pg.MOUSEBUTTONDOWN:
-                print("yes")
+                
                
                 if (selected_piece != None and board.coorToPos(pg.mouse.get_pos()) != selected_piece):
 
