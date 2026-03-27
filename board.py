@@ -33,7 +33,7 @@ class Board:
     def drawPieces(self, screen, board, Images_path):
         for r in range(self.DIMENSION):
             for c in range(self.DIMENSION):
-                current_img = board[r][c]
+                current_img = board[r][c].piece_code()
                 if current_img != ".":
                     screen.blit(Images_path[current_img],((c * self.sq_size) + 3, (r * self.sq_size) + 7))
 
