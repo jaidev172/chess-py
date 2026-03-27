@@ -19,7 +19,7 @@ class Board:
                 # print(f"current color is {current_color}")
                 # print((r + c) % 2)
                 if selected_piece!=None :
-                    print(selected_piece[0])            
+                           
                     if selected_piece[0]==(c,r):
 
                         current_color=select_colour
@@ -30,11 +30,14 @@ class Board:
                 
                 pg.draw.rect(screen,current_color,pg.Rect(c * self.sq_size, r * self.sq_size, self.sq_size, self.sq_size ))
 
-    def drawPieces(self, screen, board, Images_path):
+    def drawPieces(self, screen, board1:list, Images_path):
+        
         for r in range(self.DIMENSION):
             for c in range(self.DIMENSION):
-                current_img = board[r][c].piece_code()
-                if current_img != ".":
+                
+                if board1[r][c] != ".":
+                    current_img = board1[r][c].piece_code()
+                    # print(board1[r][c].piece_code())
                     screen.blit(Images_path[current_img],((c * self.sq_size) + 3, (r * self.sq_size) + 7))
 
     def coorToPos(self, pos):

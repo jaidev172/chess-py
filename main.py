@@ -33,8 +33,9 @@ def loadImages():
 
 
 def drawGameState(screen, gs, board,selected_piece):
+    
     board.drawBoard(screen,selected_piece)
-
+    # board.test(gs.board)
     board.drawPieces(screen, gs.board, Images_path)
 
 
@@ -45,6 +46,7 @@ def main():
     screen.fill(pg.Color("white"))
     selected_piece = None
     gs = GameState()
+    gs.create_board()
     loadImages()
     running = True
     temp = 1
@@ -61,6 +63,7 @@ def main():
                     mouse_pos = board.coorToPos(pg.mouse.get_pos())
 
                     gs.board[selected_piece[0][1]][selected_piece[0][0]], gs.board[mouse_pos[1]][mouse_pos[0]] = (".", gs.board[selected_piece[0][1]][selected_piece[0][0]])
+                    gs.board[mouse_pos[1]][mouse_pos[0]].pos=[mouse_pos[1],mouse_pos[0]]
                     
                     selected_piece = None
                 else :
