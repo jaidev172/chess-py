@@ -40,6 +40,7 @@ def drawGameState(screen, gs, board,selected_piece):
 
 
 def main():
+    p,k=[],[]
     board = Board()
     screen = pg.display.set_mode((board.WIDTH, board.HEIGHT))
     clock = pg.time.Clock()
@@ -57,13 +58,20 @@ def main():
                 running = False
             if e.type == pg.MOUSEBUTTONDOWN:
                 
-               
+                print(board.coorToPos(pg.mouse.get_pos()))
                 if (selected_piece != None and board.coorToPos(pg.mouse.get_pos()) != selected_piece):
+                     
+                     gs.move_piece(selected_piece,gs.board,board.coorToPos(pg.mouse.get_pos()),p,k)
 
-                     gs.move_piece(selected_piece,gs.board)
+                     selected_piece=None
+
                      
                 else :
-                 selected_piece = [board.coorToPos(pg.mouse.get_pos())]
+                 selected_piece = board.coorToPos(pg.mouse.get_pos())
+                 print(f"selected firest{selected_piece}")
+                 if gs.board[selected_piece[1]][selected_piece[0]] !='.':
+                    p,k=gs.board[selected_piece[1]][selected_piece[0]].getValidMoves(gs.board)
+
 
         drawGameState(screen, gs, board,selected_piece)
         pg.display.flip()

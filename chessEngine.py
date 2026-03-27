@@ -45,11 +45,17 @@ class GameState:
                print(f"Row {r}, Col {c}: {type(cell).__name__}")
 
 
-        def move_piece(self,selected_piece,board):
-                    mouse_pos = board.coorToPos(pg.mouse.get_pos())
-
-                    board[selected_piece[0][1]][selected_piece[0][0]], board[mouse_pos[1]][mouse_pos[0]] = (".", board[selected_piece[0][1]][selected_piece[0][0]])
-                    board[mouse_pos[1]][mouse_pos[0]].pos=[mouse_pos[1],mouse_pos[0]]
+    def move_piece(self,selected_piece,board,mouse_pos,pos_path,kill):
+                    print(f"kill list :{kill}")
+                    print(f"pos_path:{pos_path}")
+                    print((mouse_pos in pos_path )or (mouse_pos in kill))
+                    if (mouse_pos in pos_path )or (mouse_pos in kill): 
                     
-                    selected_piece = None
+
+                       board[selected_piece[1]][selected_piece[0]], board[mouse_pos[1]][mouse_pos[0]] = (".", board[selected_piece[1]][selected_piece[0]])
+                       board[mouse_pos[1]][mouse_pos[0]].pos=[mouse_pos[1],mouse_pos[0]]
+                    
+    def is_empty(self,pos):
+          self.board[pos[1]]   
+                       
 
