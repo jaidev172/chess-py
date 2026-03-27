@@ -41,4 +41,4 @@ class Board:
                     screen.blit(Images_path[current_img],((c * self.sq_size) + 3, (r * self.sq_size) + 7))
 
     def coorToPos(self, pos):
-        return [pos[0] // self.sq_size, pos[1] // self.sq_size]
+        return [pos[1] // self.sq_size, pos[0] // self.sq_size]

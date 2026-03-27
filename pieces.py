@@ -19,8 +19,9 @@ class pawn(piece):
         self.firstmove=True
 
     def getValidMoves(self,board):
+        print(f"pos of pawn {self.pos}")
         pos_path=None
-        kill=None
+        kill=[]
         pos=self.pos
         NB = lambda a, b: a if b == 8 or b == -1 else b
         if self.colour=="B": 
@@ -38,14 +39,14 @@ class pawn(piece):
         else:
              
             if board[op(pos[0],1)][pos[1]]==".":
-                pos_path=[[(pos[0],1),pos[1]]]
+                pos_path=[[op(pos[0],1),pos[1]]]
 
         move=[(op(pos[0],1),NB(pos[1],pos[1]+1)),(op(pos[0],1),NB(pos[1],pos[1]-1))]
 
         for moves in move:
             if moves[0]==pos[0] or moves[1]==pos[1]:
                 continue
-            elif board[moves[0]][moves[1]]!=".":
+            if board[moves[0]][moves[1]]!="." and board[moves[0]][moves[1]].colour!=self.colour:
                 kill.append(list(moves))
         if kill==None:
                 kill=[8,8]

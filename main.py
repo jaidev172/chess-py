@@ -69,8 +69,8 @@ def main():
                 else :
                  selected_piece = board.coorToPos(pg.mouse.get_pos())
                  print(f"selected firest{selected_piece}")
-                 if gs.board[selected_piece[1]][selected_piece[0]] !='.':
-                    p,k=gs.board[selected_piece[1]][selected_piece[0]].getValidMoves(gs.board)
+                 if gs.board[selected_piece[0]][selected_piece[1]] !='.':
+                    p,k=gs.board[selected_piece[0]][selected_piece[1]].getValidMoves(gs.board)
 
 
         drawGameState(screen, gs, board,selected_piece)
