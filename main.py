@@ -60,12 +60,8 @@ def main():
                
                 if (selected_piece != None and board.coorToPos(pg.mouse.get_pos()) != selected_piece):
 
-                    mouse_pos = board.coorToPos(pg.mouse.get_pos())
-
-                    gs.board[selected_piece[0][1]][selected_piece[0][0]], gs.board[mouse_pos[1]][mouse_pos[0]] = (".", gs.board[selected_piece[0][1]][selected_piece[0][0]])
-                    gs.board[mouse_pos[1]][mouse_pos[0]].pos=[mouse_pos[1],mouse_pos[0]]
-                    
-                    selected_piece = None
+                     gs.move_piece(selected_piece,gs.board)
+                     
                 else :
                  selected_piece = [board.coorToPos(pg.mouse.get_pos())]
 

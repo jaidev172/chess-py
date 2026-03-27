@@ -45,3 +45,11 @@ class GameState:
                print(f"Row {r}, Col {c}: {type(cell).__name__}")
 
 
+        def move_piece(self,selected_piece,board):
+                    mouse_pos = board.coorToPos(pg.mouse.get_pos())
+
+                    board[selected_piece[0][1]][selected_piece[0][0]], board[mouse_pos[1]][mouse_pos[0]] = (".", board[selected_piece[0][1]][selected_piece[0][0]])
+                    board[mouse_pos[1]][mouse_pos[0]].pos=[mouse_pos[1],mouse_pos[0]]
+                    
+                    selected_piece = None
+
