@@ -68,6 +68,48 @@ class pawn(piece):
         pass
 class king(piece):
 
+    def __init__(self, type, colour, pos):
+        super().__init__(type, colour, pos)
+        self.FirstMove=True
+    def getValidMoves(self,board):
+        pos_path=[]
+        kill=[]
+        pos=self.pos
+        moves=[]
+        colour=self.colour
+         #[(-1,-1)   (-1,1)  (-1,+1)
+         # (1,-1)    (1,1)   (1,+1)
+         # (+1,-1    (+1,1)  (+1,+1))]
+
+            
+        moves.extend([
+            [pos[0],pos[1]+1],
+            [pos[0],pos[1]-1],
+            [pos[0]-1,pos[1]],
+            [pos[0]+1,pos[1]],
+            [pos[0]-1,pos[1]-1],
+            [pos[0]-1,pos[1]+1],
+            [pos[0]+1,pos[1]-1],
+            [pos[0]+1,pos[1]+1]
+            ])
+
+        
+        for r,c in moves:
+
+            if r !=-1 and r!=8 and c!=-1 and c!=8 :
+                if board[r][c]==".":
+                    pos_path.append([r,c])
+                
+                elif board[r][c].colour != colour:
+                    kill.append([r,c])
+        
+        return pos_path,kill
+
+
+            
+
+
+
     
     def moves(self):
         pass

@@ -7,11 +7,11 @@ select_colour=pg.Color(194, 214, 247)# light blue rgb()   194, 214, 247  185, 20
 class Board:
     def __init__(self):
         self.DIMENSION = 8
-        self.WIDTH = self.HEIGHT = 552
+        self.WIDTH = self.HEIGHT = 560
 
         self.sq_size = self.HEIGHT // self.DIMENSION
 
-    def drawBoard(self, screen,selected_piece):
+    def drawBoard(self, screen,selected_piece,p,k):
         colors = [pg.Color(preset[1][0]), pg.Color(preset[1][1])]
         for r in range(self.DIMENSION):
             for c in range(self.DIMENSION):
@@ -25,10 +25,24 @@ class Board:
                         current_color=select_colour
 
 
-                    # print(selected_piece)
+                    # print(f"seldsel{selected_piece}")
                     # prevous=selected_piece
                 
                 pg.draw.rect(screen,current_color,pg.Rect(c * self.sq_size, r * self.sq_size, self.sq_size, self.sq_size ))
+                if selected_piece and [r,c] in p:
+                    overlay = pg.Surface((self.sq_size, self.sq_size), pg.SRCALPHA)
+
+  
+                    center = (self.sq_size // 2, self.sq_size // 2)
+
+    
+                    radius = self.sq_size // 7
+
+  
+                    pg.draw.circle(overlay, (0, 0, 0, 80), center, radius)
+
+                    screen.blit(overlay, (c * self.sq_size, r * self.sq_size))
+                
 
     def drawPieces(self, screen, board1:list, Images_path):
         

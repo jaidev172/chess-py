@@ -32,9 +32,9 @@ def loadImages():
         Images_path[piece] = pg.image.load("assets/" + piece + ".png")
 
 
-def drawGameState(screen, gs, board,selected_piece):
+def drawGameState(screen, gs, board,selected_piece,p,k):
     
-    board.drawBoard(screen,selected_piece)
+    board.drawBoard(screen,selected_piece,p,k)
     # board.test(gs.board)
     board.drawPieces(screen, gs.board, Images_path)
 
@@ -58,11 +58,11 @@ def main():
                 running = False
             if e.type == pg.MOUSEBUTTONDOWN:
                 
-                print(board.coorToPos(pg.mouse.get_pos()))
+                print(f"corr{board.coorToPos(pg.mouse.get_pos())}")
                 if (selected_piece != None and board.coorToPos(pg.mouse.get_pos()) != selected_piece):
                      
                      gs.move_piece(selected_piece,gs.board,board.coorToPos(pg.mouse.get_pos()),p,k)
-
+                     p,k=[[8,8]],[[8,8]]
                      selected_piece=None
 
                      
@@ -73,7 +73,8 @@ def main():
                     p,k=gs.board[selected_piece[0]][selected_piece[1]].getValidMoves(gs.board)
 
 
-        drawGameState(screen, gs, board,selected_piece)
+        drawGameState(screen, gs, board,selected_piece,p,k)
+
         pg.display.flip()
         clock.tick(fps)
 

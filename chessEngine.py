@@ -32,14 +32,14 @@ class GameState:
             self.board[6][r]=p.pawn('pawn',"W",[6,r])
 
 
-        self.board[7][0]=p.rook("rook","W",[0,0])             #white
-        self.board[7][1]=p.kinght("kinght","W",[0,1])
-        self.board[7][2]=p.bishop("bishop","W",[0,2])
-        self.board[7][3]=p.queen("queen","W",[0,3])
-        self.board[7][4]=p.king("king","W",[0,4])
-        self.board[7][5]=p.bishop("bishop","W",[0,5])
-        self.board[7][6]=p.kinght("kinght","W",[0,6])
-        self.board[7][7]=p.rook("rook","W",[0,7])
+        self.board[7][0]=p.rook("rook","W",[7,0])             #white
+        self.board[7][1]=p.kinght("kinght","W",[7,1])
+        self.board[7][2]=p.bishop("bishop","W",[7,2])
+        self.board[7][3]=p.queen("queen","W",[7,3])
+        self.board[7][4]=p.king("king","W",[7,4])
+        self.board[7][5]=p.bishop("bishop","W",[7,5])
+        self.board[7][6]=p.kinght("kinght","W",[7,6])
+        self.board[7][7]=p.rook("rook","W",[7,7])
         for r, row in enumerate(self.board):
             for c, cell in enumerate(row):
                print(f"Row {r}, Col {c}: {type(cell).__name__}")
