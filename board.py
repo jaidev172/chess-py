@@ -20,7 +20,7 @@ class Board:
                 # print((r + c) % 2)
                 if selected_piece!=None :
                            
-                    if selected_piece[0]==(c,r):
+                    if selected_piece==[r,c]:
 
                         current_color=select_colour
 

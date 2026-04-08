@@ -3,6 +3,7 @@ from chessEngine import GameState
 from board import Board
 
 pg.init()
+pg.mixer.init()
 
 fps = 20
 Images_path = {}
@@ -29,7 +30,7 @@ def loadImages():
         "wp",
     ]
     for piece in pieces:
-        Images_path[piece] = pg.image.load("assets/" + piece + ".png")
+        Images_path[piece] = pg.image.load("assets/img/" + piece + ".png")
 
 
 def drawGameState(screen, gs, board,selected_piece,p,k):

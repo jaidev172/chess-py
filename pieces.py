@@ -20,7 +20,7 @@ class pawn(piece):
 
     def getValidMoves(self,board):
         print(f"pos of pawn {self.pos}")
-        pos_path=None
+        pos_path=[[8,8]]
         kill=[]
         pos=self.pos
         NB = lambda a, b: a if b == 8 or b == -1 else b
@@ -124,9 +124,38 @@ class rook(piece):
         pass
 
 class kinght(piece):
-    def moves(self):
-        pass
-     
+    def __init__(self, type, colour, pos):
+        super().__init__(type, colour, pos)
+    def piece_code(self):
+        return self.colour.lower()+self.type[2]
+    def getValidMoves(self,board):
+        pos_path=[]
+        kill=[]
+        pos=self.pos
+        moves=[]
+        colour=self.colour
+        invalid = {-1, -2, 8, 9}
+
+        moves.extend([[pos[0]-1,pos[1]-2],
+                      [pos[0]-2,pos[1]-1],
+                      [pos[0]-2,pos[1]+1],
+                      [pos[0]-1,pos[1]+2],
+                      [pos[0]+1,pos[1]+2],
+                      [pos[0]+2,pos[1]-1],
+                      [pos[0]+2,pos[1]-1],
+                      [pos[0]+1,pos[1]-2]
+                      ])
+        print(moves)
+        for r,c in moves:
+
+            if r not in invalid and c not in invalid :
+                if board[r][c]==".":
+                    pos_path.append([r,c])
+                
+                elif board[r][c].colour != colour:
+                    kill.append([r,c])
+        
+        return pos_path,kill
 
 class bishop(piece):
     def moves(slef):
