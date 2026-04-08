@@ -2,11 +2,22 @@ import pygame as pg
 from chessEngine import GameState
 from board import Board
 
+
 pg.init()
 pg.mixer.init()
 
 fps = 20
 Images_path = {}
+
+sounds = {
+    "move": pg.mixer.Sound("assets/sound/move-self.wav"),
+    "capture": pg.mixer.Sound("assets/sound/capture.wav"),
+    "check": pg.mixer.Sound("assets/sound/move-check.wav"),
+    "game-start": pg.mixer.Sound("assets/sound/game-start.wav"),
+    "game-end":pg.mixer.Sound("assets/sound/game-end.wav")
+
+}
+
 
 
 def loadImages():
@@ -32,6 +43,10 @@ def loadImages():
     for piece in pieces:
         Images_path[piece] = pg.image.load("assets/img/" + piece + ".png")
 
+def play_sound(key, loops=0):
+    if key in sounds:
+        sounds[key].play()
+
 
 def drawGameState(screen, gs, board,selected_piece,p,k):
     
@@ -52,18 +67,24 @@ def main():
     loadImages()
     running = True
     temp = 1
+    drawGameState(screen, gs, board,selected_piece,p,k)
+    play_sound("game-start")
     while running:
         for e in pg.event.get():
 
             if e.type == pg.QUIT:
+                play_sound("game-end")
                 running = False
+
             if e.type == pg.MOUSEBUTTONDOWN:
                 
                 print(f"corr{board.coorToPos(pg.mouse.get_pos())}")
                 if (selected_piece != None and board.coorToPos(pg.mouse.get_pos()) != selected_piece):
                      
-                     gs.move_piece(selected_piece,gs.board,board.coorToPos(pg.mouse.get_pos()),p,k)
+                     moved=gs.move_piece(selected_piece,gs.board,board.coorToPos(pg.mouse.get_pos()),p,k)
                      p,k=[[8,8]],[[8,8]]
+                     if moved :
+                         play_sound("move")
                      selected_piece=None
 
                      

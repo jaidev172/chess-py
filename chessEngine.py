@@ -54,6 +54,8 @@ class GameState:
 
                        board[selected_piece[0]][selected_piece[1]], board[mouse_pos[0]][mouse_pos[1]] = (".", board[selected_piece[0]][selected_piece[1]])
                        board[mouse_pos[0]][mouse_pos[1]].pos=[mouse_pos[0],mouse_pos[1]]
+                       return True
+                    return False
                     
     def is_empty(self,pos):
           self.board[pos[1]]   
